@@ -1,7 +1,9 @@
 package com.example.quanla.quannet.database;
 
+
 import com.example.quanla.quannet.R;
 import com.example.quanla.quannet.database.models.Function;
+import com.example.quanla.quannet.database.models.Location;
 
 import java.util.ArrayList;
 
@@ -24,4 +26,24 @@ public class DbContext {
 
         return arrayList;
     }
+
+    private ArrayList<Location> locations;
+
+    public ArrayList<Location> allLocations(){
+        locations = new ArrayList<>();
+
+
+        locations.add(new Location("Quan net 1" ,21.010235, 105.831214));
+        locations.add(new Location("Quan net 2" ,21.011977, 105.829441));
+        locations.add(new Location("Quan net 3" ,21.005924, 105.828176));
+        locations.add(new Location("Quan net 4" ,21.006034, 105.823992));
+        locations.add(new Location("Quan net 5" ,21.008037, 105.820366));
+        locations.add(new Location("Quan net 6" ,21.001793, 105.829279));
+        locations.add(new Location("Gan BigC" ,21.008484, 105.795110));
+        locations.add(new Location("Gan Ao" ,21.012540, 105.800088));
+
+        return locations;
+    }
+
+
 }
