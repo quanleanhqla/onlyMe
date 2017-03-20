@@ -162,11 +162,11 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         start.setLongitude(mLongitude);
         Log.d(TAG, String.format("%s", mLatitude));
 
-        for(com.example.quanla.quannet.database.models.Location l : DbContext.instance.allLocations()){
+        for(com.example.quanla.quannet.database.models.GameRoom l : DbContext.instance.getAllRooms()){
             Location dest = new Location(l.getTitle());
             dest.setLatitude(l.getLatitude());
             dest.setLongitude(l.getLongitude());
-            if(start.distanceTo(dest) <= 2000) {
+            if(start.distanceTo(dest) <= 10000) {
                 mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLatitude(), l.getLongitude())).title(l.getTitle()).draggable(true).visible(true));
             }
         }
@@ -284,7 +284,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
     }
 
-    public void direction(com.example.quanla.quannet.database.models.Location location){
+    public void direction(com.example.quanla.quannet.database.models.GameRoom location){
 
         LatLng start = new LatLng(mLatitude, mLongitude);
         LatLng end = new LatLng(location.getLatitude(), location.getLongitude());
@@ -304,7 +304,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         }
         Log.d(TAG, "clicked");
         LatLng latLng = marker.getPosition();
-        direction(new com.example.quanla.quannet.database.models.Location("end", latLng.latitude, latLng.longitude));
+        direction(new com.example.quanla.quannet.database.models.GameRoom(latLng.latitude, latLng.longitude));
         return false;
     }
 }
