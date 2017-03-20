@@ -14,8 +14,12 @@ import android.widget.LinearLayout;
 
 import com.example.quanla.quannet.R;
 import com.example.quanla.quannet.adapters.PagerAdapter;
+import com.example.quanla.quannet.events.ActivityReplaceEvent;
 import com.yalantis.guillotine.animation.GuillotineAnimation;
 
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,6 +46,8 @@ public class CoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_core);
         ButterKnife.bind(this);
+
+
 
         final int[] ICON = new int[]{
                 R.drawable.ic_thumb_up_white_24px,
@@ -95,4 +101,20 @@ public class CoreActivity extends AppCompatActivity {
         tabLayout.getTabAt(1).setIcon(ICON[1]);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Subscribe
+    public void replace(ActivityReplaceEvent activityReplaceEvent){
+        startActivity(new Intent(CoreActivity.this, DetailActivity.class));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        EventBus.getDefault().unregister(this);
+    }
 }

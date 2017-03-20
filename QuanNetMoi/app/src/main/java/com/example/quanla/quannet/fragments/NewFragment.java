@@ -50,6 +50,7 @@ public class NewFragment extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                DbContext.instance.clear();
 //                GameRoom gameRoom = dataSnapshot.child("360 Game").getValue(GameRoom.class);
 //                GameRoom gameRoom1 = dataSnapshot.child("Auto Game").getValue(GameRoom.class);
 //                DbContext.instance.add(gameRoom);
