@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -14,6 +15,7 @@ import android.widget.LinearLayout;
 
 import com.example.quanla.quannet.R;
 import com.example.quanla.quannet.adapters.PagerAdapter;
+import com.example.quanla.quannet.database.models.GameRoom;
 import com.example.quanla.quannet.events.ActivityReplaceEvent;
 import com.yalantis.guillotine.animation.GuillotineAnimation;
 
@@ -109,7 +111,17 @@ public class CoreActivity extends AppCompatActivity {
 
     @Subscribe
     public void replace(ActivityReplaceEvent activityReplaceEvent){
-        startActivity(new Intent(CoreActivity.this, DetailActivity.class));
+        switch (activityReplaceEvent.getEvent()) {
+            case HOT_EVENT:
+            startActivity(new Intent(CoreActivity.this, DetailActivity.class));
+        }
+    }
+    @Subscribe
+    public void replacegame(GameRoom gameRoom){
+        Intent intent = new Intent(CoreActivity.this,Maps2Activity.class);
+        intent.putExtra("GAME",gameRoom);
+        Log.d("GameROom111111", String.format("onClick: %s",gameRoom ));
+        startActivity(intent);
     }
 
     @Override

@@ -1,10 +1,12 @@
 package com.example.quanla.quannet.database.models;
 
+import java.io.Serializable;
+
 /**
  * Created by QuanLA on 3/19/2017.
  */
 
-public class GameRoom {
+public class GameRoom implements Serializable {
     private String urlImage;
     private String title;
     private String address;

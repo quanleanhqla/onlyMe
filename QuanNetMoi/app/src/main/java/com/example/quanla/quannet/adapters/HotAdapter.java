@@ -11,6 +11,7 @@ import com.example.quanla.quannet.adapters.viewholders.GameRoomHolder;
 import com.example.quanla.quannet.database.DbContext;
 import com.example.quanla.quannet.database.models.GameRoom;
 import com.example.quanla.quannet.events.ActivityReplaceEvent;
+import com.example.quanla.quannet.events.ReplaceEvent;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -45,7 +46,7 @@ public class HotAdapter extends RecyclerView.Adapter<GameRoomHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EventBus.getDefault().post(new ActivityReplaceEvent());
+                EventBus.getDefault().post(new ActivityReplaceEvent(ReplaceEvent.HOT_EVENT));
                 EventBus.getDefault().post(holder);
             }
         });
