@@ -37,7 +37,7 @@ public class HotAdapter extends RecyclerView.Adapter<GameRoomHolder> {
     }
 
     @Override
-    public void onBindViewHolder(GameRoomHolder holder, int position) {
+    public void onBindViewHolder(final GameRoomHolder holder, int position) {
         GameRoom gameRoom = DbContext.instance.getAllRooms().get(position);
 
         holder.bind(gameRoom, context);
@@ -46,6 +46,7 @@ public class HotAdapter extends RecyclerView.Adapter<GameRoomHolder> {
             @Override
             public void onClick(View v) {
                 EventBus.getDefault().post(new ActivityReplaceEvent());
+                EventBus.getDefault().post(holder);
             }
         });
     }

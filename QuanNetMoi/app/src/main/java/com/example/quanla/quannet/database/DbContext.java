@@ -20,7 +20,7 @@ public class DbContext {
 
     public static final DbContext instance = new DbContext();
     private ArrayList<GameRoom> allRooms;
-
+    public ArrayList<String> comments;
 
 
     public ArrayList<GameRoom> getAllRooms(){
@@ -53,5 +53,19 @@ public class DbContext {
 
     public void clear(){
         allRooms.clear();
+    }
+
+    public ArrayList<String> allComment() {
+        if (comments ==null){
+            comments = new ArrayList<>();
+        }
+
+        return comments;
+    }
+    public void addComment(String string){
+        if (comments ==null){
+            comments = new ArrayList<>();
+        }
+        comments.add(string);
     }
 }

@@ -27,6 +27,22 @@ public class GameRoomHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.tv_rate)
     TextView tvRate;
 
+    public ImageView getImgPhoto() {
+        return imgPhoto;
+    }
+
+    public TextView getTvTitle() {
+        return tvTitle;
+    }
+
+    public TextView getTvAddress() {
+        return tvAddress;
+    }
+
+    public TextView getTvRate() {
+        return tvRate;
+    }
+
     public GameRoomHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
