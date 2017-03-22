@@ -40,7 +40,12 @@ public class CustomInfoAdapter implements GoogleMap.InfoWindowAdapter {
         TextView tvDiaChi = (TextView) row.findViewById(R.id.tv_diachi);
 
         imHinh.setImageResource(R.drawable.quannet);
-        rb.setRating(4);
+        if(gameRoom.getRate().equals("GOOD")){
+            rb.setRating(4);
+        }else if(gameRoom.getRate().equals("Excellent")){
+            rb.setRating(5);
+        }
+
         tvName.setText(gameRoom.getTitle());
         tvDiaChi.setText(gameRoom.getAddress());
 
